@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swift build:*)",
+      "Bash(swift test:*)",
+      "Bash(swift run:*)",
+      "Bash(swift format:*)",
+      "Bash(scripts/test.sh:*)",
+      "Bash(scripts/build-app.sh:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(xattr:*)",
+      "Bash(mdls:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf ~/Downloads:*)",
+      "Bash(git push --force:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/format-swift.sh" }]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/test-on-stop.sh", "timeout": 300 }]
+      }
+    ]
+  }
+}
