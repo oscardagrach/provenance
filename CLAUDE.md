@@ -9,7 +9,7 @@ Roadmap and milestone status: @docs/PLAN.md
 ## Commands
 - Test: `scripts/test.sh` (wraps `swift test`; required on Command Line Tools–only machines)
 - Run one test: `scripts/test.sh --filter QuarantineParsingTests`
-- CLI: `swift run provenance [paths…]` (defaults to ~/Downloads)
+- CLI: `swift run provenance [list|groups|watch] [dir]` (defaults to ~/Downloads)
 - App: `scripts/build-app.sh && open build/Provenance.app`
 - Format: `swift format format --in-place --recursive Sources Tests` (a hook does this on edit)
 

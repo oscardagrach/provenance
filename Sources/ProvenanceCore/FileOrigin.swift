@@ -1,7 +1,7 @@
 import Foundation
 
 /// Where a file came from, as recorded by macOS in extended attributes.
-public struct FileOrigin: Sendable, Equatable {
+public struct FileOrigin: Sendable, Hashable {
     /// Source URLs from `kMDItemWhereFroms`, typically [download URL, referring page].
     public var whereFroms: [String]
     /// Parsed `com.apple.quarantine` record, if present.
@@ -19,7 +19,7 @@ public struct FileOrigin: Sendable, Equatable {
 }
 
 /// The `com.apple.quarantine` xattr: `flags;hexTimestamp;agentName;uuid`.
-public struct QuarantineInfo: Sendable, Equatable {
+public struct QuarantineInfo: Sendable, Hashable {
     public var flags: String
     public var date: Date?
     public var agent: String?
